@@ -14,10 +14,14 @@ export const initialState = [
     }
 ]
 
+export const ADD_TASK = "ADD_TASK"
+export const TOGGLE_COMPLETED = "TOGGLE_COMPLETED"
+export const CLEAR_COMPLETED = "CLEAR_COMPLETED"
+
 
 export const reducer = (state, action) => {
     switch (action.type) {
-        case "ADD_TASK":
+        case ADD_TASK:
             return [
                 ...state, { item: action.payload, completed: false, id: new Date() }
             ]
@@ -35,10 +39,8 @@ export const reducer = (state, action) => {
             })
         case "CLEAR_COMPLETED":
             return state.filter(todo => {
-                if (todo.completed === true) {
-                    return ""
-                }
-                else return todo
+
+                return todo.completed !== true
             })
 
         default: return state;

@@ -1,5 +1,5 @@
 import { useState, useReducer } from 'react'
-import { initialState, reducer } from './Reducers/todoReducer'
+import { initialState, reducer, ADD_TASK, CLEAR_COMPLETED, TOGGLE_COMPLETED } from './Reducers/todoReducer'
 
 
 function App() {
@@ -16,16 +16,16 @@ function App() {
 
   const addTodo = (e) => {
     e.preventDefault()
-    dispatch({ type: "ADD_TASK", payload: todoTask });
+    dispatch({ type: ADD_TASK, payload: todoTask });
     setTodoTask("");
   }
 
   const toggleTodo = (todoItemId) => {
-    dispatch({ type: "TOGGLE_COMPLETED", payload: todoItemId })
+    dispatch({ type: TOGGLE_COMPLETED, payload: todoItemId })
   }
 
   const clearTodo = () => {
-    dispatch({ type: "CLEAR_COMPLETED" })
+    dispatch({ type: CLEAR_COMPLETED })
   }
 
   return (
